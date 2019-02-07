@@ -96,7 +96,9 @@ __webpack_require__.r(__webpack_exports__);
 
  // create a game instance
 
-var game = new _partials_Game__WEBPACK_IMPORTED_MODULE_1__["default"]('game', 512, 256);
+var game = new _partials_Game__WEBPACK_IMPORTED_MODULE_1__["default"]('game', 512, 256); //IFFE creates a local scope here. Prevents polluting the global scope with variables. 
+//This is a recursive function that passes itself as an argument so that it loops
+// 
 
 (function gameLoop() {
   game.render();
@@ -793,11 +795,14 @@ module.exports = function (css) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Game; });
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 var Game =
 /*#__PURE__*/
@@ -807,12 +812,21 @@ function () {
 
     this.element = element;
     this.width = width;
-    this.height = height; // Other code goes here...
+    this.height = height;
+    this.gameElement = document.getElementById(element);
   }
 
   _createClass(Game, [{
     key: "render",
-    value: function render() {// More code goes here....
+    value: function render() {
+      // empty out game element before rendering. 
+      this.gameElement.innerHTML = '';
+      var svg = document.createElementNS(_settings__WEBPACK_IMPORTED_MODULE_0__["SVG_NS"], "svg");
+      svg.setAttributeNS(null, "width", this.width);
+      svg.setAttributeNS(null, "height", this.height);
+      svg.setAttributeNS(null, "viewBox", "0 0 ".concat(this.width, " ").concat(this.height));
+      svg.setAttributeNS(null, 'version', '1.1');
+      this.gameElement.appendChild(svg);
     }
   }]);
 
@@ -820,6 +834,15 @@ function () {
 }();
 
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SVG_NS", function() { return SVG_NS; });
+var SVG_NS = "http://www.w3.org/2000/svg";
 
 /***/ })
 /******/ ]);
