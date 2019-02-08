@@ -1,5 +1,6 @@
-import {SVG_NS} from '../settings';
+import {SVG_NS, KEYS} from '../settings';
 import Board from './Board';
+import Paddle from './Paddle';
 
 export default class Game {
   constructor(element, width, height) {
@@ -10,6 +11,31 @@ export default class Game {
     this.gameElement = document.getElementById(element);
 
     this.board= new Board(this.width, this.height);
+
+    this.paddleWidth = 8;
+    this.paddleHeight = 56;
+    this.boardGap = 10;
+
+    this.leftPaddle = new Paddle(
+      this.height, 
+      this.paddleWidth, 
+      this.paddleHeight,
+      this.boardGap,
+      (this.height - this.paddleHeight) / 2,
+      KEYS.a,
+      KEYS.z
+      )
+
+    this.rightPaddle = new Paddle(
+      this.height,
+      this.paddleWidth,
+      this.paddleHeight,
+      (this.width - (this.paddleWidth + this.boardGap)),
+      (this.height - this.paddleHeight) / 2,
+      KEYS.up,
+      KEYS.down 
+
+       )
   }
 
   render() {
@@ -24,6 +50,8 @@ export default class Game {
     this.gameElement.appendChild(svg);
     // rendering all game elements insde the SVG
     this.board.render(svg);
+    this.leftPaddle.render(svg);
+    this.rightPaddle.render(svg);
   }
 
 }
