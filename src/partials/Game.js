@@ -1,8 +1,11 @@
+//IMPORTS FROM PARTIALS
 import { SVG_NS, KEYS } from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
+import Score from './Score';
 
+//CONSTRUCTOR
 export default class Game {
   constructor(element, width, height) {
     this.element = element;
@@ -41,9 +44,12 @@ export default class Game {
     this.ball = new Ball(
       this.radius,
       this.width,
-      this.height,
+      this.height
     )
 
+    this.score1 = new Score(this.width / 2 - 50, 30, 30)
+    this.score2 = new Score(this.width / 2 + 25, 30, 30)
+      // PAUSE event listener
     document.addEventListener('keydown', event =>{
       if (event.key === KEYS.spaceBar) {
         this.pause = !this.pause;
@@ -72,6 +78,7 @@ export default class Game {
     this.leftPaddle.render(svg);
     this.rightPaddle.render(svg);
     this.ball.render(svg, this.leftPaddle, this.rightPaddle);
-
+    this.score1.render(svg, this.leftPaddle.score)
+    this.score2.render(svg, this.rightPaddle.score)
   }
 }
