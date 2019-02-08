@@ -5,7 +5,6 @@ export default class Board {
         this.width = width;
         this.height = height;
     }
-
     render(svg) {
         // Board rect attributes
         let rect = document.createElementNS(SVG_NS, 'rect');
@@ -22,7 +21,7 @@ export default class Board {
         line.setAttributeNS(null, "x2", this.width/2);
         line.setAttributeNS(null, "y2", this.height);
         line.setAttributeNS(null, "stroke-dasharray", "10, 5" );
-        line.setAttributeNS(null, "stroke", "black" );
+        line.setAttributeNS(null, "stroke", "#000000" );
         line.setAttributeNS(null, "stroke-width", "3" );
 
         svg.appendChild(rect);
