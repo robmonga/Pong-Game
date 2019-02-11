@@ -30,8 +30,6 @@ export default class Game {
       this.paddleHeight,
       this.boardGap,
       (this.height - this.paddleHeight) / 2,
-      KEYS.a,
-      KEYS.z
       )
       
       this.rightPaddle = new Paddle(
@@ -85,5 +83,10 @@ export default class Game {
           this.ball.render(svg, this.leftPaddle, this.rightPaddle);
           this.score1.render(svg, this.leftPaddle.score)
           this.score2.render(svg, this.rightPaddle.score)
+         if( this.ball.y <this.leftPaddle.y){
+           this.leftPaddle.up();
+         }else if(this.ball.y>this.leftPaddle.y+this.leftPaddle.height){
+          this.leftPaddle.down();
+         }
         }
       }

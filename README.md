@@ -2,20 +2,11 @@
 
 A basic pong game using SVGs.
 
-## Setup
+## Built using
+Object Oriented Programming using ES6 
+with webpack
 
-**Install dependencies:**
-
-`> npm i`
-
-**Run locally with Webpack Dev Server:**
-
-`> npm start`
-
-**Build for production:**
-
-`> npm run build`
-
+Made left paddle unbeatable with a score limit of 10. But the human has mouse control so it's fair I suppose. 
 ## Keys
 
 **Player 1:**
@@ -25,3 +16,4 @@ A basic pong game using SVGs.
 **Player 2:**
 * ▲ : up
 * ▼: down
+

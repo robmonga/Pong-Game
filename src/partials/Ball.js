@@ -79,7 +79,7 @@ export default class Ball {
       }
       
       goal(player) {
-        if(player.score===player.limit) {alert(this.player + ", wins!")}
+        if(player.score===player.limit) {alert("Computer, wins always!")}
         else {player.score++}
         this.reset();
       }

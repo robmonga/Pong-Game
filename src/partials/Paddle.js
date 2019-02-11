@@ -13,23 +13,23 @@ export default class Paddle {
     this.limit = 10; 
 
 
-    // document.addEventListener("keydown", event => {
-    //   switch(event.key) {
-    //     case upKey:
-    //     this.up();
-    //     break;
-    //     case downKey:
-    //     this.down();
-    //     break;
-    //   }
-    // });
+    document.addEventListener("keydown", event => {
+      switch(event.key) {
+        case upKey:
+        this.up();
+        break;
+        case downKey:
+        this.down();
+        break;
+      }
+    });
  
-    
+    if(this.x> this.boardHeight){
     document.addEventListener("mousemove", event=>{
-      this.y = event.clientY;
-      //  const scale = event.clientY / event.target.getBoundingClientRect().height;
-    // this.y = this.height * scale;
+    this.y = event.clientY *.8 - 150;
+    
     });  
+  }
 
   }
   
