@@ -10,7 +10,7 @@ export default class Board {
         let rect = document.createElementNS(SVG_NS, 'rect');
         rect.setAttributeNS(null, "width", this.width);
         rect.setAttributeNS(null, "height", this.height);
-        rect.setAttributeNS(null,"fill", "#353535" );
+        rect.setAttributeNS(null,"fill", "#FFCC00" );
         rect.setAttributeNS(null, "stroke","#000000")
         
         // set all the line attributes
@@ -21,12 +21,10 @@ export default class Board {
         line.setAttributeNS(null, "x2", this.width/2);
         line.setAttributeNS(null, "y2", this.height);
         line.setAttributeNS(null, "stroke-dasharray", "10, 5" );
-        line.setAttributeNS(null, "stroke", "#000000" );
+        line.setAttributeNS(null, "stroke", "#FFF" );
         line.setAttributeNS(null, "stroke-width", "3" );
         
         svg.appendChild(rect);
         svg.appendChild(line);
-        
-        // HOW DO WE ACTUALLY APPEND THIS THING TO THE SVG IN GAME
     }
 }

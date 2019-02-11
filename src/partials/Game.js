@@ -11,17 +11,20 @@ export default class Game {
     this.element = element;
     this.width = width;
     this.height = height;
-    
+    //
     this.gameElement = document.getElementById(element);
     
     this.board = new Board(this.width, this.height);
     
     this.paddleWidth = 8;
-    this.paddleHeight = 56;
+    this.paddleHeight = 100;
     this.boardGap = 10;
     this.radius = 8;
+    this.leftName = "Left";
+    this.rightName = "Right";
     
     this.leftPaddle = new Paddle(
+      this.leftName,
       this.height,
       this.paddleWidth,
       this.paddleHeight,
@@ -32,6 +35,7 @@ export default class Game {
       )
       
       this.rightPaddle = new Paddle(
+        this.rightName,
         this.height,
         this.paddleWidth,
         this.paddleHeight,
@@ -49,6 +53,7 @@ export default class Game {
           
           this.score1 = new Score(this.width / 2 - 50, 30, 30)
           this.score2 = new Score(this.width / 2 + 25, 30, 30)
+          
           // PAUSE event listener
           document.addEventListener('keydown', event =>{
             if (event.key === KEYS.spaceBar) {
@@ -57,8 +62,8 @@ export default class Game {
           });
         }
         
+        //pause game
         render() {
-          //pause game
           if(this.pause) {
             return;
           }

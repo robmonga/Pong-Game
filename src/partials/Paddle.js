@@ -1,25 +1,36 @@
 import {SVG_NS} from '../settings';
 
 export default class Paddle {
-  constructor(boardHeight, width, height, x, y, upKey, downKey) {
+  constructor(name, boardHeight, width, height, x, y, upKey, downKey) {
+    this.name = name;
     this.boardHeight = boardHeight;
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = 50;
     this.score = 0;
+    this.limit = 10; 
+
+
+    // document.addEventListener("keydown", event => {
+    //   switch(event.key) {
+    //     case upKey:
+    //     this.up();
+    //     break;
+    //     case downKey:
+    //     this.down();
+    //     break;
+    //   }
+    // });
+ 
     
-    document.addEventListener("keydown", event => {
-      switch(event.key) {
-        case upKey:
-        this.up();
-        break;
-        case downKey:
-        this.down();
-        break;
-      }
-    });
+    document.addEventListener("mousemove", event=>{
+      this.y = event.clientY;
+      //  const scale = event.clientY / event.target.getBoundingClientRect().height;
+    // this.y = this.height * scale;
+    });  
+
   }
   
   
@@ -30,8 +41,7 @@ export default class Paddle {
   
   down() {
     this.y = Math.min(this.y + this.speed, this.boardHeight - this.height);
-    
-    
+  
   }
   
   coordinates(x, y, width, height) {
@@ -49,7 +59,7 @@ export default class Paddle {
     rect.setAttributeNS(null, "height", this.height);
     rect.setAttributeNS(null, "x", this.x)
     rect.setAttributeNS(null, "y", this.y)
-    rect.setAttributeNS(null, "fill", "#fff" );
+    rect.setAttributeNS(null, "fill", "#6600CC" );
     
     svg.appendChild(rect);
     
